@@ -1,0 +1,292 @@
+<html>
+	<head>
+    <meta charset="utf-8" />
+		<title>Orçamento pessoal</title>
+
+		<!-- Bootstrap início -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!--
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    -->
+    
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Bootstrap fim -->
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+    <!-- Estilo do projeto -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+	</head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+      <div class="container">
+          <div class="nav-brand mr-5">
+            <h3 class="text-white">GeraForm</h3>
+          </div>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSuporte" aria-controls="navbarSuporte" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSuporte">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Documentos</a>
+              </li>
+            </ul>            
+          </div>
+      </div>
+    </nav>
+
+    <div class="container mb-5">
+
+      <div class="row">
+        <div class="col mb-5">
+          <h1>CONTRATO PRESTAÇÃO DE SERVIÇO</h1>
+        </div>
+      </div>
+
+      <div class="row" id="contratante">
+
+        <div class="col-md-12">
+          <h4>Contratante</h4>
+        </div>
+
+        <div class="col-md-12">
+          <input type="text" class="form-control" placeholder="Nome completo do contratante" id="nome_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Nacionalidade" id="nacionalidade_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <select class="form-control" id="estadocivil_contratante">
+            <option value="">Estado Civil</option>
+            <option value="casado">casado</option>
+            <option value="solteiro">solteiro</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="profissão" id="profissao_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Numero R.G" id="rg_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="CPF" id="cpf_contratante">
+        </div>
+
+        <div class="col-md-12">
+          <input type="text" class="form-control" placeholder="Endereço" id="endereco_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Número do endereço" id="num_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Complemento" id="compl_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Bairro" id="bairro_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Cep" id="cep_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Cidade" id="cidade_contratante">
+        </div>
+
+        <div class="col-md-6">
+          <select class="form-control" id="estado_contratante">
+            <option value="">Estado</option>
+            <option value="SP">São Paulo</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="ES">Espirito Santo</option>
+          </select>
+        </div>
+
+        <div class="col-md-12">
+          <button type="button" class="btn btn-info btn-lg btn-block prx_contratante">Próximo</button>
+        </div>
+
+      </div>
+       
+      <div class="row" id="contratado">
+
+        <div class="col-md-12">
+          <h4>Contratado</h4>
+        </div>
+
+        <div class="col-md-12">
+          <input type="text" class="form-control" placeholder="Nome completo do contratado" id="nome_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Nacionalidade" id="nacionalidade_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <select class="form-control" id="estadocivil_contratado">
+            <option value="">Estado Civil</option>
+            <option value="casado">casado</option>
+            <option value="solteiro">solteiro</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="profissão" id="profissao_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Numero R.G" id="rg_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="CPF" id="cpf_contratado">
+        </div>
+
+        <div class="col-md-12">
+          <input type="text" class="form-control" placeholder="Endereço" id="endereco_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Número do endereço" id="num_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Complemento" id="compl_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Bairro" id="bairro_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Cep" id="cep_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Cidade" id="cidade_contratado">
+        </div>
+
+        <div class="col-md-6">
+          <select class="form-control" id="estado_contratado">
+            <option value="">Estado</option>
+            <option value="SP">São Paulo</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="ES">Espirito Santo</option>
+          </select>
+        </div>
+
+        <div class="col-md-12">
+          <button type="button" class="btn btn-info btn-lg btn-block prx_contratado">Próximo</button>
+          <button type="button" class="btn btn-secondary btn-lg btn-block volta_contratado">Voltar</button>
+        </div>
+
+      </div>
+
+      <div class="row" id="dos_servico">
+
+        <div class="col-md-12">
+          <h4>Dos Serviços</h4>
+        </div>
+
+        <div class="col-md-12">
+          <textarea class="form-control" placeholder="Descrever detalhadamente os serviços prestados" id="dos_servicos"></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <button type="button" class="btn btn-info btn-lg btn-block prx_dos_servico">Próximo</button>
+          <button type="button" class="btn btn-secondary btn-lg btn-block volta_dos_servico">Voltar</button>
+        </div>
+        
+      </div> 
+
+      <div class="row" id="do_honorario">
+
+        <div class="col-md-12">
+          <h4>Dos Honorários</h4>
+        </div>
+
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="R$ valor" id="dos_honorarios">
+        </div>
+
+        <div class="col-md-12">
+          <button type="button" class="btn btn-info btn-lg btn-block prx_do_honorario">Próximo</button>
+          <button type="button" class="btn btn-secondary btn-lg btn-block volta_do_honorario">Voltar</button>
+        </div>
+        
+      </div> 
+
+      <div class="row" id="do_foro">
+
+        <div class="col-md-12">
+          <h4>Do Foro</h4>
+        </div>
+
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Local" id="local">
+        </div>
+
+        <div class="col-md-3">
+          <input type="date" class="form-control" placeholder="data" id="data">
+        </div>
+
+        <div class="col-md-12">
+          <input type="text" class="form-control" placeholder="Nome da testemunha 1" id="testemunha1">
+        </div>
+
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="RG da testemunha 1" id="rg1">
+        </div>
+
+        <div class="col-md-12">
+          <input type="text" class="form-control" placeholder="Nome da testemunha 2" id="testemunha2">
+        </div>
+
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="RG da testemunha 2" id="rg2">
+        </div>
+
+        <div class="col-md-12">
+          <button type="button" class="btn btn-info btn-lg btn-block salva_do_foro" onclick="cadastraContrato()">Finalizar</button>
+          <button type="button" class="btn btn-secondary btn-lg btn-block volta_do_foro">Voltar</button>
+        </div>
+        
+      </div>
+
+    </div> 
+  
+    
+
+
+  </body>	
+
+  <!-- Script do projeto -->
+  <script src="js/app.js"></script>
+  <script src="js/data.js"></script>
+
+</html>

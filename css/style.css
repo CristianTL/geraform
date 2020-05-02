@@ -1,0 +1,22 @@
+/*
+* 
+* @author Thomaz Cristian
+*/
+
+
+/* Estrutura conteúdos 
+---------------------------------------------*/
+
+#do_foro, #dos_servico, #contratado, #do_honorario{
+	display: none;
+}
+
+button.btn{
+	margin: 4px;
+}
+
+/* Tipografia
+---------------------------------------------*/
+input {
+	margin: 4px;
+}
