@@ -31,16 +31,22 @@ class DadosPessoa{
 		this.estado = estado
 
 	}
+
+	validarDados(pessoa = 'contratante'){
+		for (let i in this) {
+			if(this[i] == undefined || this[i] == '' || this[i] == null){
+				document.getElementById(`${i}_${pessoa}`).classList.add('is-invalid')
+				return false
+			} else {
+				document.getElementById(`${i}_${pessoa}`).classList.add('is-valid')
+				document.getElementById(`${i}_${pessoa}`).classList.remove('is-invalid')
+			}
+		}
+		return true
+	}
 }
 
-class Contratante{
-
-	constructor(obj){
-		this.tipo = obj
-	}	
-}
-
-class Contratado{
+class DoServico{
 	constructor(
 		dos_servicos, 
 		dos_honorarios, 
@@ -49,40 +55,80 @@ class Contratado{
 		testemunha1, 
 		rg1, 
 		testemunha2, 
-		rg2,
-		obj
+		rg2
 		){
-		this.dosServicos = dos_servicos
-		this.dosHonorarios = dos_honorarios
+		this.dos_servicos = dos_servicos
+		this.dos_honorarios = dos_honorarios
 		this.local = local
 		this.data = data
 		this.testemunha1 = testemunha1 
 		this.rg1 = rg1
 		this.testemunha2 = testemunha2
-		this.rg2
-		this.tipo = {
-			contratado: obj
+		this.rg2 = rg2
+	}
+
+	validarDados(){
+		for(let i in this){
+			if(this[i] == undefined || this[i] == '' || this == null){
+				document.getElementById(`${i}`).classList.add('is-invalid')
+				return false
+			} else {
+				document.getElementById(`${i}`).classList.add('is-valid')
+				document.getElementById(`${i}`).classList.remove('is-invalid')
+			}
 		}
+		return true
 	}
 }
 
+class Bd{
+	constructor(){
+		let id = localStorage.getItem('id')
+
+		if(id == null){
+			localStorage.setItem('id', 0)
+		}
+	}
+
+	getProximoId(){
+		let proximoId = localStorage.getItem('id')
+		return parseInt(proximoId)+1
+	}
+
+	gravar(dt){
+		let id = this.getProximoId()
+
+		localStorage.setItem(id, JSON.stringify(dt))
+		localStorage.setItem('id', id)
+	}
+}
+
+let nome, nacionalidade, estadocivil, profissao, rg, cpf, endereco, num, compl, bairro, cep, cidade, estado
+
+let bd = new Bd()
+
+//contratante ou contratado
+function getDados(pessoa){
+	nome = document.getElementById('nome_'+pessoa)
+	nacionalidade = document.getElementById('nacionalidade_'+pessoa)
+	estadocivil = document.getElementById('estadocivil_'+pessoa)
+	profissao = document.getElementById('profissao_'+pessoa)
+	rg = document.getElementById('rg_'+pessoa)
+	cpf = document.getElementById('cpf_'+pessoa)
+	endereco = document.getElementById('endereco_'+pessoa)
+	num = document.getElementById('num_'+pessoa)
+	compl = document.getElementById('compl_'+pessoa)
+	bairro = document.getElementById('bairro_'+pessoa)
+	cep = document.getElementById('cep_'+pessoa)
+	cidade = document.getElementById('cidade_'+pessoa)
+	estado = document.getElementById('estado_'+pessoa)
+}
 
 function cadastraContrato(){
-	let nome = document.getElementById('nome_contratante')
-	let nacionalidade = document.getElementById('nacionalidade_contratante')
-	let estadocivil = document.getElementById('estadocivil_contratante')
-	let profissao = document.getElementById('profissao_contratante')
-	let rg = document.getElementById('rg_contratante')
-	let cpf = document.getElementById('cpf_contratante')
-	let endereco = document.getElementById('endereco_contratante')
-	let num = document.getElementById('num_contratante')
-	let compl = document.getElementById('compl_contratante')
-	let bairro = document.getElementById('bairro_contratante')
-	let cep = document.getElementById('cep_contratante')
-	let cidade = document.getElementById('cidade_contratante')
-	let estado = document.getElementById('estado_contratante')
 
-	let dados = new DadosPessoa(
+	getDados('contratante');
+	
+	let dados_contratante = new DadosPessoa(
 		nome.value,
 		nacionalidade.value,
 		estadocivil.value,
@@ -98,14 +144,65 @@ function cadastraContrato(){
 		estado.value
 	)
 
-	//let contratante = new Contratante(dados)
+	getDados('contratado');
+	
+	let dados_contratado = new DadosPessoa(
+		nome.value,
+		nacionalidade.value,
+		estadocivil.value,
+		profissao.value,
+		rg.value,
+		cpf.value,
+		endereco.value,
+		num.value,
+		compl.value,
+		bairro.value,
+		cep.value,
+		cidade.value,
+		estado.value
+	)
+
+	let dos_servicos = document.getElementById('dos_servicos')
+	let dos_honorarios = document.getElementById('dos_honorarios') 
+	let local = document.getElementById('local')
+	let data = document.getElementById('data') 
+	let testemunha1 = document.getElementById('testemunha1') 
+	let rg1 = document.getElementById('rg1') 
+	let testemunha2 = document.getElementById('testemunha2')  
+	let rg2 = document.getElementById('rg2') 
+
+	let do_servico = new DoServico(
+		dos_servicos.value,  
+		dos_honorarios.value,  
+		local.value,  
+		data.value,  
+		testemunha1.value,  
+		rg1.value,  
+		testemunha2.value,  
+		rg2.value
+	)
 
 
-	console.log(dados)
+	if(dados_contratante.validarDados() && dados_contratado.validarDados('contratado') && do_servico.validarDados()){
+		
+		let contrato = {
+			contratante: dados_contratante,
+			contratado: dados_contratado,
+			do_servico: do_servico
+		}
+		bd.gravar(contrato)
 
-	let cont = new Contratante(dados)
+		console.log(contrato)
+	} else {
+		console.log('Preencha corretamente!')
+	}
 
-	console.log(cont)
+	
+}
 
-	console.log('fim')
+function carregaContrato(){
+
+	document.getElementById('nome_contratante').innerHTML = JSON.parse(localStorage.getItem(1)).contratante.nome
+	console.log(JSON.parse(localStorage.getItem(1)).contratante.nome)
+
 }
