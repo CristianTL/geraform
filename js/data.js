@@ -200,9 +200,42 @@ function cadastraContrato(){
 	
 }
 
-function carregaContrato(){
+function carregaContrato(id = 1){
 
-	document.getElementById('nome_contratante').innerHTML = JSON.parse(localStorage.getItem(1)).contratante.nome
-	console.log(JSON.parse(localStorage.getItem(1)).contratante.nome)
+	let tipo = {contratante:1,contratado:2}
+
+	for(let pessoa in tipo){
+
+		document.getElementById('nome_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].nome
+		document.getElementById('nacionalidade_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].nacionalidade
+		document.getElementById('estadocivil_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].estadocivil
+		document.getElementById('profissao_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].profissao
+		document.getElementById('rg_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].rg
+		document.getElementById('cpf_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].cpf
+		document.getElementById('endereco_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].endereco
+		document.getElementById('num_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].num
+		document.getElementById('compl_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].compl
+		document.getElementById('bairro_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].bairro
+		document.getElementById('cep_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].cep
+		document.getElementById('cidade_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].cidade
+		document.getElementById('estado_'+pessoa).innerHTML = JSON.parse(localStorage.getItem(id))[pessoa].estado
+
+	}
+
+	let opcoes = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+	let data = new Date(JSON.parse(localStorage.getItem(id)).do_servico.data)
+
+	let formatoData = new Intl.DateTimeFormat('pt-BR', opcoes)
+	document.getElementById('data').innerHTML = formatoData.format(data)
+
+	document.getElementById('dos_honorarios').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.dos_honorarios
+	document.getElementById('local').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.local	
+	document.getElementById('testemunha1').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.testemunha1
+	document.getElementById('rg1').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.rg1
+	document.getElementById('testemunha2').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.testemunha2
+	document.getElementById('rg2').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.rg2
+
+	
+	//console.log(JSON.parse(localStorage.getItem(1)).contratante.nome)
 
 }
