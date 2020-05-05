@@ -266,6 +266,7 @@ function carregaContrato(){
 	let formatoData = new Intl.DateTimeFormat('pt-BR', opcoes)
 	document.getElementById('data').innerHTML = formatoData.format(data)
 
+	document.getElementById('dos_servicos').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.dos_servicos
 	document.getElementById('dos_honorarios').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.dos_honorarios
 	document.getElementById('local').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.local	
 	document.getElementById('testemunha1').innerHTML = JSON.parse(localStorage.getItem(id)).do_servico.testemunha1
