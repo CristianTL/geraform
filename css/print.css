@@ -16,6 +16,9 @@ line-height: 1.4em;
 	margin-top: 2cm;
 }
 
+.imprimir{
+	display: none
+}
 
 /* Tipografia
 -------------------------------------------------------------*/

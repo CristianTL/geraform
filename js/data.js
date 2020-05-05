@@ -101,6 +101,36 @@ class Bd{
 		localStorage.setItem(id, JSON.stringify(dt))
 		localStorage.setItem('id', id)
 	}
+
+	listaRegistro(pessoa = 'contratante'){
+		
+		//array para contratos
+		let contratos = Array()
+
+		let id = localStorage.getItem('id')
+		
+		//listando
+		for(let i = 1; i <= id; i++){
+			
+			let retorno_db = JSON.parse(localStorage.getItem(i))
+
+			if(retorno_db == null){
+				continue
+			}
+
+			let contrato = retorno_db[pessoa]
+
+			contrato.id = i
+			contratos.push(contrato)
+		}
+
+		return contratos
+		
+	}
+
+	remover(id){
+		localStorage.removeItem(id)
+	}
 }
 
 let nome, nacionalidade, estadocivil, profissao, rg, cpf, endereco, num, compl, bairro, cep, cidade, estado
@@ -192,15 +222,23 @@ function cadastraContrato(){
 		}
 		bd.gravar(contrato)
 
-		console.log(contrato)
+		window.location.href = "servico.html?"+localStorage.getItem('id')
+
 	} else {
+
+		$('#modalValidacao').modal('show')
 		console.log('Preencha corretamente!')
 	}
 
 	
 }
 
-function carregaContrato(id = 1){
+function carregaContrato(){
+
+	let retorno = window.location.search.replace('?','')
+	let id = retorno == ''? 1 : retorno
+
+	console.log(id)
 
 	let tipo = {contratante:1,contratado:2}
 
@@ -237,5 +275,50 @@ function carregaContrato(id = 1){
 
 	
 	//console.log(JSON.parse(localStorage.getItem(1)).contratante.nome)
+
+}
+
+function listandoContrato(){
+
+	let contratos = bd.listaRegistro()
+
+	//elementos para o tbody
+	var listaContratos = document.getElementById('listaContratos')
+	listaContratos.innerHTML = ''
+
+	contratos.forEach(function(d){
+
+		//criando a linha (tr)
+		let linha = listaContratos.insertRow()
+
+		linha.insertCell(0).innerHTML = d.nome
+		linha.insertCell(1).innerHTML = d.cpf
+
+		//criando o botão
+		let btnAbrir = document.createElement("button")
+		btnAbrir.className = 'btn btn-primary'
+		btnAbrir.innerHTML = '<i class="fas fa-print"></i>'
+		linha.insertCell(2).append(btnAbrir)
+		btnAbrir.onclick = function(){
+			window.location.href = "servico.html?"+d.id
+		}
+
+		//excluir o botão
+		let btnExcluir = document.createElement("button")
+		btnExcluir.className = 'btn btn-danger'
+		btnExcluir.innerHTML = '<i class="fas fa-times"></i>'
+		linha.insertCell(3).append(btnExcluir)
+		btnExcluir.onclick = function(){
+			var retorno = confirm('Tem certeza que deseja excluir?')
+			if(retorno){
+				console.log('ok')
+				bd.remover(d.id)
+				window.location.reload()
+			}
+			
+		}
+
+
+	})
 
 }

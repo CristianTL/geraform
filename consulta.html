@@ -1,0 +1,89 @@
+	<html>
+	<head>
+    <meta charset="utf-8" />
+	<title>Orçamento pessoal</title>
+
+	<!-- Bootstrap início -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+    <!-- Bootstrap fim -->
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+    <!-- Estilo do projeto -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- CSS para impressão -->
+	<link rel="stylesheet" type="text/css" href="css/print.css" media="print">
+
+
+	</head>
+
+  <body onload="listandoContrato()">
+
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+      <div class="container">
+          <div class="nav-brand mr-5">
+            <h3 class="text-white">GeraForm</h3>
+          </div>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSuporte" aria-controls="navbarSuporte" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSuporte">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="consulta.html">Documentos</a>
+              </li>
+            </ul>            
+          </div>
+      </div>
+    </nav>
+
+    <div class="container">
+    	<p class="cabecalho">
+    		<h4 class="text-center">LISTA DE CONTRATOS</h4>
+    	</p>
+    </div>
+
+    <div class="container">
+
+    	<div class="row">
+    		<div class="col">
+    			<table class="table">
+    				<thead>
+    					<th>Contratante</th>
+    					<th>CPF</th>
+    					<th></th>
+    					<th></th>
+    				</thead>
+    				<tbody id="listaContratos">
+    				</tbody>
+    			</table>
+    		</div>
+    	</div>
+    	
+
+    </div>
+
+    
+
+  </body>	
+
+  <!-- Script do projeto -->
+  <script src="js/app.js"></script>
+  <script src="js/data.js"></script>
+
+</html>
